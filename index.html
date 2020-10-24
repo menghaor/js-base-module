@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./core.js"></script>
+</head>
+<body>
+
+    <button id="add-inner-btn">添加Inner模块</button>
+    <button id="add-outter-btn">添加Outter模块</button>
+    <script>
+        /**
+         * 使用说明：
+         * const $mo = JsModule.create({
+         *      moduleBaseUrl: "./js-modules/"
+         * });
+         * 
+         * 1.定义模块
+         * $mo.define(function (exports) {
+         *      exports(模块名，模块内容);
+         * });
+         * 
+         * 
+         * 2.使用模块
+         * $mo.use(模块名，function () {
+         *      do sth...
+         * });
+         */
+
+        
+        //创建一个实例
+        const $mo = JsModule.create({
+            moduleBaseUrl: "./js-modules/"
+        });
+
+        //分别使用了，inner、bind-event模块
+        $mo.use(["inner", "bind-event"], function ($) {
+            console.log($)
+            console.log("我已经加载好了模块了")
+        });
+    </script>
+</body>
+</html>
